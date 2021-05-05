@@ -10,6 +10,28 @@ namespace DrReview.Controllers
     [ApiController]
     public class DoctorController : ControllerBase
     {
-        private readonly IDoctorController _doctorController;
+        private readonly IDoctorRepository _doctorRepository;
+        public DoctorController(IDoctorRepository doctorRepository)
+        {
+            _doctorRepository = doctorRepository;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_doctorRepository.GetDoctors());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var doctor = _doctorRepository.GetDoctorById(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(doctor);
+        }
     }
 }
