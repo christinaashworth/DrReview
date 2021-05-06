@@ -103,7 +103,9 @@ export function UserProfileProvider(props) {
 
   return (
     <UserProfileContext.Provider value={{ isLoggedIn, login, logout, register, getToken, getUserProfile, getAllProfiles, getUserProfileById}}>
-      {props.children}
+      {isFirebaseReady
+        ? props.children
+        : <p>Not Ready</p>}
     </UserProfileContext.Provider>
   );
 }
