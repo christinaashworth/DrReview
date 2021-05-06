@@ -176,7 +176,7 @@ namespace DrReview.Repositories
                 {
                     cmd.CommandText = @"
                                         UPDATE Review
-                                            SET Title = @Title
+                                            SET Title = @Title,
                                                 Content = @Content
                                         WHERE Id = @Id
                                         ";

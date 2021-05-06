@@ -28,6 +28,10 @@ export default function ApplicationViews() {
           <DoctorList />
         </Route>
 
+          {/* <Route path="/myprofile">
+            <ViewProfile />
+          </Route> */}
+
         </Switch>
     </main>
   );
