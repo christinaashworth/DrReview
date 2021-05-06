@@ -60,7 +60,7 @@ namespace DrReview.Repositories
                     cmd.CommandText = @"
                                         SELECT Id, [Name], PracticeArea, Location, Gender, Phone, Email, Website, Notes
                                         FROM Doctor
-                                        WHERE d.Id = @Id
+                                        WHERE Id = @Id
                                         ";
 
                     cmd.Parameters.AddWithValue("@Id", Id);
@@ -82,7 +82,7 @@ namespace DrReview.Repositories
                             Website = DbUtils.GetString(reader, "Website"),
                             Notes = DbUtils.GetString(reader, "Notes")
                         };
-                    }
+                    };
 
                     reader.Close();
                     return doctor;
