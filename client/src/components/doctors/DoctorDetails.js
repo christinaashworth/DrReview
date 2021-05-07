@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { DoctorContext } from '../../providers/DoctorProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider';
 import { useHistory, useParams } from "react-router-dom";
+import DoctorReviewList from "../reviews/DoctorReviewList";
 import { Container, Header, Segment, Button } from 'semantic-ui-react'
 
 const DoctorDetails = () => {
@@ -20,7 +21,6 @@ const DoctorDetails = () => {
     history.push('/addreview')
   }
 
-
   return (
     <Container>
       <Header as='h1'>{doctor.name}</Header>
@@ -32,6 +32,7 @@ const DoctorDetails = () => {
           <div>{doctor.Email}</div>
         </Segment>
         <Button onClick={reviewForm}>Add Review</Button>
+      <DoctorReviewList />
     </Container>
   )
 }

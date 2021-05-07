@@ -54,5 +54,31 @@ export const ReviewProvider = (props) => {
       .then((res) => res.json()))
   }
 
-  
+  const updateReview = (review) => {
+    return getToken().then((token) =>
+    fetch(`${apiUrl}/${review.id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(review)
+    }))
+  }
+
+  const deleteReview = (id) => {
+    return getToken().then((token) =>
+      fetch(`${apiUrl}/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }))
+  }
+
+  return (
+    <ReviewContext.Provider value={{ getReviewsByDoctor, getReviewsByUser, getReviewById, addReview, updateReview, deleteReview}}>
+      {props.children}
+    </ReviewContext.Provider>
+  )
 }
