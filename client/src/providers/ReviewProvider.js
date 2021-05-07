@@ -5,6 +5,7 @@ export const ReviewContext = React.createContext();
 
 export const ReviewProvider = (props) => {
   const apiUrl = "/api/review";
+  const [doctorId, setDoctorId] = useState(0)
   const { getToken } = useContext(UserProfileContext);
 
   const getReviewsByDoctor = (doctorId) => {

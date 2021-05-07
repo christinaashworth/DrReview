@@ -7,6 +7,7 @@ import { Container, Header, Segment, Button } from 'semantic-ui-react'
 
 const DoctorDetails = () => {
   const { getDoctorById } = useContext(DoctorContext)
+  const 
   const [ doctor, setDoctor ] = useState({})
   const { id } = useParams();
   const doctorId = parseInt(id);
