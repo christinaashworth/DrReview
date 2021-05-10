@@ -4,6 +4,7 @@ import { UserProfileContext } from "../providers/UserProfileProvider";
 import DoctorList from "./doctors/DoctorList";
 import DoctorDetails from "./doctors/DoctorDetails";
 import ReviewForm from "./reviews/ReviewForm";
+import MyProfile from "./profiles/MyProfile";
 import Hello from "./Hello";
 import Login from "./Login";
 import Register from "./Register";
@@ -38,9 +39,9 @@ export default function ApplicationViews() {
           <ReviewForm />
         </Route>
 
-          {/* <Route path="/myprofile">
-            <ViewProfile />
-          </Route> */}
+          <Route path="/myprofile">
+            <MyProfile />
+          </Route>
 
         </Switch>
     </main>

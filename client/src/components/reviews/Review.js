@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "semantic-ui-react";
+import ReviewEdit from "./ReviewEdit";
+import ReviewDelete from "./ReviewDelete";
 
 const Review = ({ review }) => {
   const history = useHistory();
@@ -24,8 +26,8 @@ const Review = ({ review }) => {
           <p>{review.userProfile.username}</p>
           <p>{new Date(review.createDateTime).toLocaleDateString("en-US").split(', ')[0]}</p>
         </div>
-        <Button onClick={editReview}>Edit</Button>
-        <Button onClick={deleteReview}>Delete</Button>
+        <Button onClick={ReviewEdit}>Edit</Button>
+        <Button onClick={ReviewDelete}>Delete</Button>
       </div>
     )
   } else {

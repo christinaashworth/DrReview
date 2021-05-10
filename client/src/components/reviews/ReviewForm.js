@@ -9,7 +9,7 @@ export const ReviewForm = () => {
 
   const userProfile = sessionStorage.getItem("userProfile");
   const currentUser = JSON.parse(userProfile)
-console.log(doctorId)
+
 
   const [ review, setReview ] = useState({
     title: "",
