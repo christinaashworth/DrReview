@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 import DoctorList from "./doctors/DoctorList";
 import DoctorDetails from "./doctors/DoctorDetails";
+import ReviewForm from "./reviews/ReviewForm";
 import Hello from "./Hello";
 import Login from "./Login";
 import Register from "./Register";
@@ -31,6 +32,10 @@ export default function ApplicationViews() {
 
         <Route path={`/doctors/:id`}>
           <DoctorDetails />
+        </Route>
+
+        <Route path={"/addreview"}>
+          <ReviewForm />
         </Route>
 
           {/* <Route path="/myprofile">

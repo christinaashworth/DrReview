@@ -78,7 +78,7 @@ export const ReviewProvider = (props) => {
   }
 
   return (
-    <ReviewContext.Provider value={{ getReviewsByDoctor, getReviewsByUser, getReviewById, addReview, updateReview, deleteReview}}>
+    <ReviewContext.Provider value={{ getReviewsByDoctor, getReviewsByUser, getReviewById, addReview, updateReview, deleteReview, doctorId, setDoctorId }}>
       {props.children}
     </ReviewContext.Provider>
   )
