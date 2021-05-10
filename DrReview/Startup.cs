@@ -26,6 +26,7 @@ namespace DrReview
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<IDoctorRepository, DoctorRepository>();
             services.AddTransient<ISpecialConsiderationRepository, SpecialConsiderationRepository>();
+            services.AddTransient<IReviewRepository, ReviewRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";

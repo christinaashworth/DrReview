@@ -26,11 +26,12 @@ export const DoctorProvider = (props) => {
       fetch(`${apiUrl}/${id}`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json"
+          Authorization: `Bearer ${token}`
         },
       })
-      .then((res) => res.json()))
+      .then(res => res.json())
+
+      )
   }
 
   return (

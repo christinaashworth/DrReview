@@ -5,7 +5,7 @@ const Doctor = ({doctor}) => {
   const history = useHistory();
 
   const viewDetails = () => {
-    history.push(`/doctors/viewdetails/${doctor.id}`)
+    history.push(`/doctors/${doctor.id}`)
   }
 
   return (
