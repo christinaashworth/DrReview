@@ -3,13 +3,13 @@ import { Button, Form, TextArea } from "semantic-ui-react";
 import { useHistory, useParams } from 'react-router-dom';
 import { ReviewContext } from "../../providers/ReviewProvider";
 
-export const ReviewForm = () => {
+const ReviewForm = () => {
   const { addReview, doctorId } = useContext(ReviewContext)
   const history = useHistory();
 
   const userProfile = sessionStorage.getItem("userProfile");
   const currentUser = JSON.parse(userProfile)
-console.log(doctorId)
+
 
   const [ review, setReview ] = useState({
     title: "",
@@ -32,6 +32,7 @@ console.log(doctorId)
       doctorId: doctorId
     })
     .then(setReview)
+    .then(history.push(`/doctors/${doctorId}`))
   }
 
   return (

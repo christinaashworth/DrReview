@@ -89,5 +89,48 @@ namespace DrReview.Repositories
                 }
             }
         }
+
+        public List<Doctor> Search(string criterion)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    var sql = @"
+                                SELECT Id, [Name], PracticeArea, Location, Gender, Phone, Email, Website, Notes
+                                FROM Doctor
+                                WHERE [Name] LIKE @Criterion OR PracticeArea LIKE @Criterion OR Location LIKE @Criterion
+                                ";
+
+
+                    cmd.CommandText = sql;
+                    DbUtils.AddParameter(cmd, "@Criterion", $"%{criterion}%");
+                    var reader = cmd.ExecuteReader();
+
+                    var doctors = new List<Doctor>();
+                    while (reader.Read())
+                    {
+                        Doctor doctor = new Doctor
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Name = DbUtils.GetString(reader, "Name"),
+                            PracticeArea = DbUtils.GetString(reader, "PracticeArea"),
+                            Location = DbUtils.GetString(reader, "Location"),
+                            Gender = DbUtils.GetString(reader, "Gender"),
+                            Phone = DbUtils.GetString(reader, "Phone"),
+                            Email = DbUtils.GetString(reader, "Email"),
+                            Website = DbUtils.GetString(reader, "Website"),
+                            Notes = DbUtils.GetString(reader, "Notes")
+                        };
+                        doctors.Add(doctor);
+                    };
+
+                    reader.Close();
+
+                    return doctors;
+                }
+            }
+        }
     }
 }

@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "semantic-ui-react";
+import ReviewEdit from "./ReviewEdit";
+import ReviewDelete from "./ReviewDelete";
 
 const Review = ({ review }) => {
   const history = useHistory();
