@@ -13,12 +13,12 @@ const DoctorList = () => {
   }, []);
 
   useEffect(() => {
-    if (searchResults) {
+    if (searchResults.length > 0) {
       setListOfDoctors(searchResults) 
     } else {
       setListOfDoctors(doctors)  
     }
-  }, [])
+  }, [doctors, searchResults])
 
   console.log(searchResults)
 

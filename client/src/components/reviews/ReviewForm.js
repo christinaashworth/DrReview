@@ -32,6 +32,7 @@ const ReviewForm = () => {
       doctorId: doctorId
     })
     .then(setReview)
+    .then(history.push(`/doctors/${doctorId}`))
   }
 
   return (

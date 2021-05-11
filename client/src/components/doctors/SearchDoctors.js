@@ -7,14 +7,16 @@ const SearchDoctors = () => {
   const { search } = useContext(DoctorContext);
   const history = useHistory();
 
-  const [searchTerm, setSearchTerm] = useState({});
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleControlledInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   useEffect(() => {
+    if (searchTerm !== "") {
     search(searchTerm);
+    }
   }, [searchTerm]);
 
   return (

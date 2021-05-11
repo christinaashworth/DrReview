@@ -16,10 +16,11 @@ const ReviewDelete = () => {
 
   const deleteThisReview = () => {
     deleteReview(id)
+    .then(() => history.push(`/doctors/${doctorId}`))
   }
 
   const cancel = () => {
-    history.push(`/reviews/${id}`)
+    history.push(history.push(`/doctors/${doctorId}`))
   }
 
   return (

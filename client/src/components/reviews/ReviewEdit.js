@@ -4,7 +4,7 @@ import { ReviewContext } from "../../providers/ReviewProvider";
 import { useHistory, useParams } from "react-router-dom";
 
 const ReviewEdit = () => {
-  const { updateReview, getReviewById } = useContext(ReviewContext)
+  const { updateReview, getReviewById, doctorId } = useContext(ReviewContext)
   const { id } = useParams();
   const [review, setReview] = useState({})
   const history = useHistory();
@@ -31,12 +31,12 @@ const ReviewEdit = () => {
       content: content
     })
     .then((review) => {
-      history.push(`/reviews/${review.id}`);
+      history.push(`/doctors/${doctorId}`);
     })
   }
 
   const cancel = () => {
-    history.push(`/reviews/${review.id}`);
+    history.push(`/doctors/${doctorId}`);
   };
 
   if (review === null) {

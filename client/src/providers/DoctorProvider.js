@@ -36,18 +36,19 @@ export const DoctorProvider = (props) => {
 
   const search = (q) => {
     return getToken().then((token) =>
-      fetch(`${apiUrl}/search`, {
+      fetch(`${apiUrl}/search?q=${q}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`
         },
       })
       .then((res) => res.json()))
-      .then(setSearchResults)
+      .then((searchResults) => { 
+        return setSearchResults(searchResults) })
   }
 
   return (
-    <DoctorContext.Provider value={{doctors, setDoctors, getAllDoctors, getDoctorById, search}}>
+    <DoctorContext.Provider value={{doctors, setDoctors, getAllDoctors, getDoctorById, search, searchResults}}>
       {props.children}
     </DoctorContext.Provider>
   )
