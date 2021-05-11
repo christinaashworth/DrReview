@@ -1,15 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Form, TextArea } from "semantic-ui-react";
 import { ReviewContext } from "../../providers/ReviewProvider";
 import { useHistory, useParams } from "react-router-dom";
 
 const ReviewEdit = () => {
   const { updateReview, getReviewById } = useContext(ReviewContext)
   const { id } = useParams();
-  const [review, setReview] = useReview({})
+  const [review, setReview] = useState({})
   const history = useHistory();
 
-  const [topic, setTopic] = useState("");
+  const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const userProfile = sessionStorage.getItem("userProfile");
@@ -20,18 +20,16 @@ const ReviewEdit = () => {
   }, []);
 
   useEffect(() => {
-    setTopic(review.topic)
+    setTitle(review.title)
     setContent(review.content)
   }, [review])
 
-  const saveReview = (event) => {
-    const updatedReview = {
-      ...review
-    };
-    updatedReview.topic = topic
-    updatedReview.content = content
-
-    updateReview(updatedReview)
+  const saveReview = () => {
+    updateReview({
+      id: review.id,
+      title: title,
+      content: content
+    })
     .then((review) => {
       history.push(`/reviews/${review.id}`);
     })
@@ -52,11 +50,11 @@ const ReviewEdit = () => {
           <Form>
             <Form.Field>
               <label>Title</label>
-              <input type="text" id="title" onChange={(event) => event.target.value} required autoFocus value={title} />
+              <input type="text" id="title" onChange={(event) => setTitle(event.target.value)} required autoFocus value={title} />
             </Form.Field>
             <Form.Field>
               <label>Content</label>
-              <TextArea type="text" id="content" onChange={(event) => event.target.value} required autoFocus value={content} rows="10" />
+              <TextArea type="text" id="content" onChange={(event) => setContent(event.target.value)} required autoFocus value={content} rows="10" />
             </Form.Field>
             <Button onClick={saveReview}>Save</Button>
             <Button onClick={cancel}>Cancel</Button>

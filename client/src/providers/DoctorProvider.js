@@ -6,6 +6,7 @@ export const DoctorContext = React.createContext();
 export const DoctorProvider = (props) => {
   const apiUrl = "/api/doctor";
   const [doctors, setDoctors] = useState([]);
+  const [searchResults, setSearchResults] = useState([])
   const { getToken } = useContext(UserProfileContext);
 
   const getAllDoctors = () => {
@@ -30,12 +31,23 @@ export const DoctorProvider = (props) => {
         },
       })
       .then(res => res.json())
-
       )
   }
 
+  const search = (q) => {
+    return getToken().then((token) =>
+      fetch(`${apiUrl}/search`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      })
+      .then((res) => res.json()))
+      .then(setSearchResults)
+  }
+
   return (
-    <DoctorContext.Provider value={{doctors, setDoctors, getAllDoctors, getDoctorById}}>
+    <DoctorContext.Provider value={{doctors, setDoctors, getAllDoctors, getDoctorById, search}}>
       {props.children}
     </DoctorContext.Provider>
   )

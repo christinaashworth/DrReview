@@ -7,5 +7,6 @@ namespace DrReview.Repositories
     {
         Doctor GetDoctorById(int Id);
         List<Doctor> GetDoctors();
+        List<Doctor> Search(string criterion);
     }
 }

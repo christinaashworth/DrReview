@@ -178,9 +178,9 @@ namespace DrReview.Repositories
                                         UPDATE Review
                                             SET Title = @Title,
                                                 Content = @Content
-                                        WHERE Id = @Id
+                                        WHERE id = @id
                                         ";
-                    cmd.Parameters.AddWithValue("@Id", review.Id);
+                    cmd.Parameters.AddWithValue("@id", review.Id);
                     cmd.Parameters.AddWithValue("@Title", review.Title);
                     cmd.Parameters.AddWithValue("@Content", review.Content);
 

@@ -26,8 +26,8 @@ const Review = ({ review }) => {
           <p>{review.userProfile.username}</p>
           <p>{new Date(review.createDateTime).toLocaleDateString("en-US").split(', ')[0]}</p>
         </div>
-        <Button onClick={ReviewEdit}>Edit</Button>
-        <Button onClick={ReviewDelete}>Delete</Button>
+        <Button onClick={editReview}>Edit</Button>
+        <Button onClick={deleteReview}>Delete</Button>
       </div>
     )
   } else {

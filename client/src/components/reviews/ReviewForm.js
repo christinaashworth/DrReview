@@ -3,7 +3,7 @@ import { Button, Form, TextArea } from "semantic-ui-react";
 import { useHistory, useParams } from 'react-router-dom';
 import { ReviewContext } from "../../providers/ReviewProvider";
 
-export const ReviewForm = () => {
+const ReviewForm = () => {
   const { addReview, doctorId } = useContext(ReviewContext)
   const history = useHistory();
 

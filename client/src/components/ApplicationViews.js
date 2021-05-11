@@ -5,6 +5,8 @@ import DoctorList from "./doctors/DoctorList";
 import DoctorDetails from "./doctors/DoctorDetails";
 import ReviewForm from "./reviews/ReviewForm";
 import MyProfile from "./profiles/MyProfile";
+import ReviewEdit from "./reviews/ReviewEdit";
+import ReviewDelete from "./reviews/ReviewDelete";
 import Hello from "./Hello";
 import Login from "./Login";
 import Register from "./Register";
@@ -41,6 +43,14 @@ export default function ApplicationViews() {
 
           <Route path="/myprofile">
             <MyProfile />
+          </Route>
+
+          <Route path={`/review/edit/:id`}>
+            <ReviewEdit />
+          </Route>
+
+          <Route path={`/review/delete/:id`}>
+            <ReviewDelete />
           </Route>
 
         </Switch>

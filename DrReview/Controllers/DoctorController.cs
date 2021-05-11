@@ -33,5 +33,11 @@ namespace DrReview.Controllers
 
             return Ok(doctor);
         }
+
+        [HttpGet("search")]
+        public IActionResult Search(string q)
+        {
+            return Ok(_doctorRepository.Search(q));
+        }
     }
 }
